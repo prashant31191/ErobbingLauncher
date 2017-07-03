@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.erobbing.erobbinglauncher.MainActivity">
+
+    <com.erobbing.erobbinglauncher.widget.DateView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.erobbing.erobbinglauncher.widget.WeatherView
+        android:id="@+id/weatherview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip">
+    </com.erobbing.erobbinglauncher.widget.WeatherView>
+    <!--720 280 60  android:statusBarColor="#00ffffff"-->
+    <com.erobbing.erobbinglauncher.circlemenu.CircleLayout android:layout_width="520dp"
+        android:layout_height="520dp"
+        android:layout_marginTop="226dp"
+        android:padding="2dp">
+
+        <Button android:id="@+id/button_navigation"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_navigation"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_music"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_music"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_fm"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_fm"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_dvr"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_dvr"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_btdialer"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_btdialer"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_carassistant"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_carassistant"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_msg"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_msg"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_settings"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_settings"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_navigation1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_navigation"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_music1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_music"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_fm1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_fm"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_dvr1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_dvr"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_btdialer1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_btdialer"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_carassistant1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_carassistant"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_msg1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_msg"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_settings1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_settings"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_navigation2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_navigation"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_music2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_music"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_fm2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_fm"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_dvr2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_dvr"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_btdialer2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_btdialer"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_carassistant2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_carassistant"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_msg2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_msg"
+            android:onClick="btnClick" />
+
+        <Button android:id="@+id/button_settings2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/icon_launcher_settings"
+            android:onClick="btnClick" />
+        <!--<Button
+            android:id="@+id/btn25"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/video360"
+            android:onClick="btnClick"/>
+
+        <Button
+            android:id="@+id/btn26"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/volte"
+            android:onClick="btnClick"/>
+
+        <Button
+            android:id="@+id/btn27"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/warning"
+            android:onClick="btnClick"/>
+
+        <Button
+            android:id="@+id/btn28"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/wifi"
+            android:onClick="btnClick"/>-->
+
+        <!--<Button
+            android:id="@+id/btn2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="缴费"/>
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="还钱"/>
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="存款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_add"
+            android:onClick="btnClick"
+            android:text="汇款"/>-->
+    </com.erobbing.erobbinglauncher.circlemenu.CircleLayout>
+</LinearLayout>
