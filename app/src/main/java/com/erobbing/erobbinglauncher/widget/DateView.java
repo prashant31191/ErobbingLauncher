@@ -14,11 +14,11 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.erobbing.erobbinglauncher.R;
-//import com.yaomei.util.strHelpeUtil;
 
 public class DateView extends FrameLayout {
 
-    private TextView tv_date_time, tv_week, tv_date;
+    private TextView mTime;
+    private TextView mDate;
 
     int second;
 
@@ -44,9 +44,9 @@ public class DateView extends FrameLayout {
         View view = LayoutInflater.from(getContext()).inflate(
                 R.layout.date_view, this);
 
-        tv_date_time = (TextView) view.findViewById(R.id.tv_date_time);
+        mTime = (TextView) view.findViewById(R.id.time);
         //tv_week = (TextView) view.findViewById(R.id.tv_week);
-        tv_date = (TextView) view.findViewById(R.id.tv_date);
+        mDate = (TextView) view.findViewById(R.id.date);
         init();
         final Calendar calendar = Calendar.getInstance();
         second = calendar.get(Calendar.SECOND);
@@ -55,15 +55,9 @@ public class DateView extends FrameLayout {
     }
 
     void init() {
-        //java.text.DateFormat df = new java.text.SimpleDateFormat("HH:mm");
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-        tv_date_time.setText(df.format(new Date()));
-        //tv_week.setText(strHelpeUtil.getWeekOfDate(new Date()));
-        //strHelpeUtil str = new strHelpeUtil(getContext());
-        //tv_date.setText(str.toString());
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        String t=format.format(new Date());
-        tv_date.setText(t.toString());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        mTime.setText(timeFormat.format(new Date()).toString());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        mDate.setText(dateFormat.format(new Date()).toString());
     }
-
 }

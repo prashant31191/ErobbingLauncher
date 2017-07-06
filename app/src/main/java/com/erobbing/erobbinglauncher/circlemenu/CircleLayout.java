@@ -1,4 +1,4 @@
-package com.erobbing.erobbinglauncher.circlemenu;
+package com.erobbing.erobbinglauncher.CircleMenu;
 
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;

@@ -13,7 +13,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.erobbing.erobbinglauncher.widget.MusicView;
 import com.erobbing.erobbinglauncher.widget.WeatherView;
+import com.erobbing.erobbinglauncher.widget.CircleProgress.CircleProgress;
+import com.erobbing.erobbinglauncher.widget.CircleProgress.CenterText;
+import com.erobbing.erobbinglauncher.widget.CircleProgress.CenterImage;
 
 public class MainActivity extends Activity {
     private Button buttonNavigation;
@@ -47,6 +52,8 @@ public class MainActivity extends Activity {
     private float startY;
 
     private WeatherView mWeatherView;
+    private MusicView mMusicView;
+    private CircleProgress mCircleProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +122,15 @@ public class MainActivity extends Activity {
         buttonSettings2.setOnTouchListener(mOnTouchListener);
 
         mWeatherView = (WeatherView) findViewById(R.id.weatherview);
-        mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast),"26℃","雷阵雨","呼和浩特市");
+        mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "阵雨", "青岛市");
+
+        mMusicView = (MusicView) findViewById(R.id.musicview);
+        mMusicView.updateMusicInfo("In The End", "Linkin Park", R.drawable.icon_feature_wifi);
+        mMusicView.updateMusicProgress(66);
+
+        //mCircleProgress = (CircleProgress) findViewById(R.id.circle_progress);
+        //mCircleProgress.setOnCenterDraw(new CenterImage(this,R.drawable.icon_feature_file_browser));
+        //mCircleProgress.setProgress(70);
     }
 
     public void btnClick(View v) {

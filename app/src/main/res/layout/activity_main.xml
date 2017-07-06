@@ -1,29 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_bg"
-    android:gravity="center_horizontal"
+
     android:orientation="vertical"
     tools:context="com.erobbing.erobbinglauncher.MainActivity">
+    <!--android:gravity="center_horizontal"    -->
+    <!--<com.erobbing.erobbinglauncher.CircleImage.RoundImageView
+        android:id="@+id/roundImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/icon_feature_music">
+    </com.erobbing.erobbinglauncher.CircleImage.RoundImageView>-->
 
-    <com.erobbing.erobbinglauncher.widget.DateView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!--<com.erobbing.erobbinglauncher.CircleImage.CircleImageView
+        xmlns:myxmlns="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fragment_my_image_user"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        myxmlns:border_width="2dp"
+        myxmlns:border_color="#00ffffff"
+        android:src="@drawable/icon_feature_bluetooth">
+    </com.erobbing.erobbinglauncher.CircleImage.CircleImageView>-->
 
-    <com.erobbing.erobbinglauncher.widget.WeatherView
-        android:id="@+id/weatherview"
+    <!--<com.erobbing.erobbinglauncher.widget.CircleProgress.CircleProgress
+        android:id="@+id/circle_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dip">
-    </com.erobbing.erobbinglauncher.widget.WeatherView>
-    <!--720 280 60  android:statusBarColor="#00ffffff"-->
-    <com.erobbing.erobbinglauncher.circlemenu.CircleLayout android:layout_width="520dp"
+        android:rotation="180"
+        app:degree="0"
+        app:borderWidth="2dp"
+        app:progressColor="#ffffff00"
+        app:progressStyle="arc"
+        app:radius="40dp"
+        app:tickDensity="3">
+    </com.erobbing.erobbinglauncher.widget.CircleProgress.CircleProgress>-->
+    <!-- 512dp -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_marginTop="90dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="118dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <com.erobbing.erobbinglauncher.widget.MusicView
+                android:id="@+id/musicview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+            </com.erobbing.erobbinglauncher.widget.MusicView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="118dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <com.erobbing.erobbinglauncher.widget.DateView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+            </com.erobbing.erobbinglauncher.widget.DateView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="118dp"
+            android:layout_weight="1"
+            android:gravity="center">
+            <!-- android:layout_marginTop="50dip" -->
+            <com.erobbing.erobbinglauncher.widget.WeatherView
+                android:id="@+id/weatherview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+            </com.erobbing.erobbinglauncher.widget.WeatherView>
+        </LinearLayout>
+    </LinearLayout>
+    <!--720 280 60  android:statusBarColor="#00ffffff"   android:layout_marginTop="226dp"-->
+    <com.erobbing.erobbinglauncher.CircleMenu.CircleLayout android:layout_width="520dp"
         android:layout_height="520dp"
-        android:layout_marginTop="226dp"
-        android:padding="2dp">
+        android:layout_marginTop="70dp"
+        android:padding="2dp"
+        android:layout_gravity="center_horizontal">
 
         <Button android:id="@+id/button_navigation"
             android:layout_width="52dp"
@@ -359,5 +442,5 @@
             android:drawableTop="@android:drawable/ic_menu_add"
             android:onClick="btnClick"
             android:text="汇款"/>-->
-    </com.erobbing.erobbinglauncher.circlemenu.CircleLayout>
+    </com.erobbing.erobbinglauncher.CircleMenu.CircleLayout>
 </LinearLayout>
