@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
+    android:layout_width="wrap_content"
     android:layout_height="118dp"
     android:background="#00ffffff"
     android:orientation="vertical"
@@ -10,14 +10,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:textColor="#ffffffff"
-        android:textSize="46sp"
-        android:textStyle="bold" />
+        android:textSize="26sp" />
 
     <TextView android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-3dp"
         android:textColor="#66ffffff"
-        android:textStyle="bold" />
+        android:textSize="11sp" />
 </LinearLayout>

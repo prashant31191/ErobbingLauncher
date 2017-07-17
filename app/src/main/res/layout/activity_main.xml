@@ -47,7 +47,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="118dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="65dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -60,14 +60,15 @@
                 android:id="@+id/musicview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:paddingRight="30dp">
             </com.erobbing.erobbinglauncher.widget.MusicView>
         </LinearLayout>
 
-        <Space
-            android:layout_width="60dp"
+        <!--<Space
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"/>-->
 
         <LinearLayout
             android:layout_width="170dp"
@@ -82,10 +83,10 @@
             </com.erobbing.erobbinglauncher.widget.DateView>
         </LinearLayout>
 
-        <Space
-            android:layout_width="80dp"
+        <!--<Space
+            android:layout_width="85dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"/>-->
 
         <LinearLayout
             android:layout_width="170dp"
@@ -97,14 +98,15 @@
                 android:id="@+id/weatherview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="30dp">
             </com.erobbing.erobbinglauncher.widget.WeatherView>
         </LinearLayout>
     </LinearLayout>
     <!--720 280 60  android:statusBarColor="#00ffffff"   android:layout_marginTop="226dp"-->
     <com.erobbing.erobbinglauncher.CircleMenu.CircleLayout android:layout_width="520dp"
         android:layout_height="520dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="44dp"
         android:padding="2dp"
         android:layout_gravity="center_horizontal">
 

@@ -1,6 +1,7 @@
 package com.erobbing.erobbinglauncher.widget;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -79,6 +80,9 @@ public class WeatherView extends LinearLayout {
                 R.layout.weather_view, this);
 
         mTemperature = (TextView) view.findViewById(R.id.temperature);
+        Typeface typeFace = Typeface.createFromAsset(context.getAssets(), "fonts/Expansiva.ttf");
+        mTemperature.setTypeface(typeFace);
+        //mTemperature.getPaint().setFakeBoldText(true);//equals to android:textStyle="bold" in xml
 
         mIconWeather = (ImageView) view.findViewById(R.id.icon_weather);
         mWeather = (TextView) view.findViewById(R.id.weather);
@@ -91,7 +95,7 @@ public class WeatherView extends LinearLayout {
      * 初始化组件 信息
      */
     void init() {
-        mIconWeather.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+        mIconWeather.setImageDrawable(getResources().getDrawable(R.drawable.ic_weather_cleartoovercast));
         mWeather.setText("cloudy");
         mLocation.setText("qingdao");
         mTemperature.setText("32℃");

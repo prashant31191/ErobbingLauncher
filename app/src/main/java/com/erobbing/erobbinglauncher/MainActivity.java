@@ -1,6 +1,7 @@
 package com.erobbing.erobbinglauncher;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -122,10 +123,10 @@ public class MainActivity extends Activity {
         buttonSettings2.setOnTouchListener(mOnTouchListener);
 
         mWeatherView = (WeatherView) findViewById(R.id.weatherview);
-        mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "阵雨", "青岛市");
+        mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "多云", "青岛市");
 
         mMusicView = (MusicView) findViewById(R.id.musicview);
-        mMusicView.updateMusicInfo("In The End", "Linkin Park", R.drawable.icon_feature_wifi);
+        mMusicView.updateMusicInfo("In The End", "Linkin Park", R.drawable.default_album);
         mMusicView.updateMusicProgress(66);
 
         //mCircleProgress = (CircleProgress) findViewById(R.id.circle_progress);
@@ -135,79 +136,56 @@ public class MainActivity extends Activity {
 
     public void btnClick(View v) {
         if (isButtonClick) {
-            Toast.makeText(MainActivity.this, ((Button) v).getId() + "", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, ((Button) v).getId() + "", Toast.LENGTH_SHORT).show();
             switch (((Button) v).getId()) {
                 case R.id.button_navigation:
-                    Log.e("====", "==============button_navigation");
-                    break;
                 case R.id.button_navigation1:
-                    Log.e("====", "==============button_navigation1");
-                    break;
                 case R.id.button_navigation2:
-                    Log.e("====", "==============button_navigation2");
+                    //Log.e("====", "==============button_navigation123");
+                    startActivity(new Intent().setClassName("com.autonavi.amapautolite", "com.autonavi.auto.remote.fill.UsbFillActivity"));
                     break;
                 case R.id.button_music:
-                    Log.e("====", "==============button_music");
-                    break;
                 case R.id.button_music1:
-                    Log.e("====", "==============button_music1");
-                    break;
                 case R.id.button_music2:
-                    Log.e("====", "==============button_music2");
+                    //Log.e("====", "==============button_music123");
+                    startActivity(new Intent().setClassName("cn.kuwo.kwmusiccar", "cn.kuwo.kwmusiccar.WelcomeActivity"));
                     break;
                 case R.id.button_fm:
-                    Log.e("====", "==============button_fm");
-                    break;
                 case R.id.button_fm1:
-                    Log.e("====", "==============button_fm1");
-                    break;
                 case R.id.button_fm2:
-                    Log.e("====", "==============button_fm2");
+                    //Log.e("====", "==============button_fm123");
+                    startActivity(new Intent().setClassName("com.caf.fmradio", "com.caf.fmradio.MainActivity"));
                     break;
                 case R.id.button_dvr:
-                    Log.e("====", "==============button_dvr");
-                    break;
                 case R.id.button_dvr1:
-                    Log.e("====", "==============button_dvr1");
-                    break;
                 case R.id.button_dvr2:
-                    Log.e("====", "==============button_dvr2");
+                    //Log.e("====", "==============button_dvr123");
+                    startActivity(new Intent().setClassName("com.luobin.dvr", "com.luobin.dvr.ui.MainActivity"));
+                    //Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button_btdialer:
-                    Log.e("====", "==============button_btdialer");
-                    break;
                 case R.id.button_btdialer1:
-                    Log.e("====", "==============button_btdialer1");
-                    break;
                 case R.id.button_btdialer2:
-                    Log.e("====", "==============button_btdialer2");
+                    //Log.e("====", "==============button_btdialer123");
+                    startActivity(new Intent().setClassName("com.hmct.bluetoothdialer", "com.hmct.bluetoothdialer.MainActivity"));
                     break;
                 case R.id.button_carassistant:
-                    Log.e("====", "==============button_carassistant");
-                    break;
                 case R.id.button_carassistant1:
-                    Log.e("====", "==============button_carassistant1");
-                    break;
                 case R.id.button_carassistant2:
-                    Log.e("====", "==============button_carassistant2");
+                    //Log.e("====", "==============button_carassistant123");
+                    Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button_msg:
-                    Log.e("====", "==============button_msg");
-                    break;
                 case R.id.button_msg1:
-                    Log.e("====", "==============button_msg1");
-                    break;
                 case R.id.button_msg2:
-                    Log.e("====", "==============button_msg2");
+                    //Log.e("====", "==============button_msg123");
+                    Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button_settings:
-                    Log.e("====", "==============button_settings");
-                    break;
                 case R.id.button_settings1:
-                    Log.e("====", "==============button_settings1");
-                    break;
                 case R.id.button_settings2:
-                    Log.e("====", "==============button_settings2");
+                    //Log.e("====", "==============button_settings123");
+                    startActivity(new Intent().setClassName("com.android.settings", "com.android.settings.Settings"));
                     break;
             }
         }

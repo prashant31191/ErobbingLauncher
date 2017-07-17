@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -45,6 +46,9 @@ public class DateView extends FrameLayout {
                 R.layout.date_view, this);
 
         mTime = (TextView) view.findViewById(R.id.time);
+        Typeface typeFace = Typeface.createFromAsset(context.getAssets(), "fonts/Expansiva.ttf");
+        mTime.setTypeface(typeFace);
+        //mTime.getPaint().setFakeBoldText(true);//equals to android:textStyle="bold" in xml
         //tv_week = (TextView) view.findViewById(R.id.tv_week);
         mDate = (TextView) view.findViewById(R.id.date);
         init();
