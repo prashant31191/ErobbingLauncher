@@ -1,9 +1,15 @@
 package com.erobbing.erobbinglauncher;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.erobbing.erobbinglauncher.widget.MusicView;
@@ -20,6 +27,13 @@ import com.erobbing.erobbinglauncher.widget.WeatherView;
 import com.erobbing.erobbinglauncher.widget.CircleProgress.CircleProgress;
 import com.erobbing.erobbinglauncher.widget.CircleProgress.CenterText;
 import com.erobbing.erobbinglauncher.widget.CircleProgress.CenterImage;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+//import org.json.JSONArray;
+//import org.json.JSONException;
+//import org.json.JSONObject;
+import com.android.mltcode.ferace.weatherforecast.IWeatherInterface;
 
 public class MainActivity extends Activity {
     private Button buttonNavigation;
@@ -55,6 +69,18 @@ public class MainActivity extends Activity {
     private WeatherView mWeatherView;
     private MusicView mMusicView;
     private CircleProgress mCircleProgress;
+
+    private static final String WEATHER_AIDL_PACKNAME = "com.android.mltcode.ferace.weatherforecast";
+    private static final String WEATHER_ACTION_SERVICES = "com.android.hoinnet.weather.forecast";
+    private static final String WEATHER_UP_SUCCES = "android.mltcode.ferace.weather_up_succes";
+    private static final String WEATHER_LIST = "weather_list";
+    private static final String TAG = "ErobbingLauncher";
+    private ServiceConnection mServiceConnection;
+    private IWeatherInterface mIWeatherInterface;
+    private boolean isConnected = false;
+    private IntentFilter mFilter;
+
+    private LinearLayout mWeatherLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +155,45 @@ public class MainActivity extends Activity {
         mMusicView.updateMusicInfo("In The End", "Linkin Park", R.drawable.default_album);
         mMusicView.updateMusicProgress(66);
 
+        mWeatherLayout = (LinearLayout) findViewById(R.id.weather_layout);
+        mWeatherLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("====", "===============LinearLayout");
+                getWeatherList();
+            }
+        });
+
         //mCircleProgress = (CircleProgress) findViewById(R.id.circle_progress);
         //mCircleProgress.setOnCenterDraw(new CenterImage(this,R.drawable.icon_feature_file_browser));
         //mCircleProgress.setProgress(70);
+        bindWeatherService();
+        mFilter = new IntentFilter();
+        mFilter.addAction(WEATHER_UP_SUCCES);
+        registerReceiver(mWeatherReceiver, mFilter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //registerReceiver(mWeatherReceiver, mFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //unregisterReceiver(mWeatherReceiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mWeatherReceiver != null) {
+            unregisterReceiver(mWeatherReceiver);
+        }
+        if (mServiceConnection != null) {
+            unbindService(mServiceConnection);
+        }
     }
 
     public void btnClick(View v) {
@@ -232,4 +294,53 @@ public class MainActivity extends Activity {
             return false;
         }
     };
+
+    private void bindWeatherService() {
+        Intent intent = new Intent();
+        intent.setAction(WEATHER_ACTION_SERVICES);
+        intent.setPackage(WEATHER_AIDL_PACKNAME);
+        mServiceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                mIWeatherInterface = IWeatherInterface.Stub.asInterface(service);
+                isConnected = true;
+                Log.e("====", "-----------connected---------" + isConnected);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                isConnected = false;
+                Log.e("====", "--------disconnected--------" + isConnected);
+            }
+        };
+        bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private BroadcastReceiver mWeatherReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            Log.i(TAG, "action:" + action);
+            if (WEATHER_UP_SUCCES.equals(action)) {
+                String string = intent.getStringExtra(WEATHER_LIST);
+                Log.e("====", "广播接收到天气信息：" + string);
+                JSONArray jsonArray = JSON.parseArray(string);  //转换成 JSonArray
+                Log.e("====", "天气数量：" + jsonArray.size());
+                mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "多云", "青岛市");
+            }
+        }
+    };
+
+    private void getWeatherList() {
+        try {
+            String string = mIWeatherInterface.getWeatherList();
+            Log.e("====", "主动查询的天气：" + string);
+            JSONArray jsonArray = JSON.parseArray(string);  //转换成 JSonArray
+            Log.e("====", "主动查询到的天气数量：" + jsonArray.size());
+            //mTextViewQust.setText(string);
+            mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "多云", "青岛市");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

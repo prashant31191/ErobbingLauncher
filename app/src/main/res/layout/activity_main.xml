@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg"
+    android:background="@drawable/main_bg1"
 
     android:orientation="vertical"
     tools:context="com.erobbing.erobbinglauncher.MainActivity">
@@ -89,6 +89,7 @@
             android:layout_weight="1"/>-->
 
         <LinearLayout
+            android:id="@+id/weather_layout"
             android:layout_width="170dp"
             android:layout_height="118dp"
             android:layout_weight="1"
@@ -253,196 +254,6 @@
             android:layout_height="52dp"
             android:background="@drawable/icon_launcher_settings"
             android:onClick="btnClick" />
-        <!--<Button
-            android:id="@+id/btn25"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/video360"
-            android:onClick="btnClick"/>
 
-        <Button
-            android:id="@+id/btn26"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/volte"
-            android:onClick="btnClick"/>
-
-        <Button
-            android:id="@+id/btn27"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/warning"
-            android:onClick="btnClick"/>
-
-        <Button
-            android:id="@+id/btn28"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/wifi"
-            android:onClick="btnClick"/>-->
-
-        <!--<Button
-            android:id="@+id/btn2"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="缴费"/>
-
-        <Button
-            android:id="@+id/btn3"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="还钱"/>
-
-        <Button
-            android:id="@+id/btn4"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="存款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>
-
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:onClick="btnClick"
-            android:text="汇款"/>-->
     </com.erobbing.erobbinglauncher.CircleMenu.CircleLayout>
 </LinearLayout>
