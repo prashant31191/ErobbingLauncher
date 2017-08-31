@@ -9,7 +9,9 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +32,7 @@ import com.erobbing.erobbinglauncher.widget.CircleProgress.CenterImage;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 //import org.json.JSONArray;
 //import org.json.JSONException;
 //import org.json.JSONObject;
@@ -81,6 +84,19 @@ public class MainActivity extends Activity {
     private IntentFilter mFilter;
 
     private LinearLayout mWeatherLayout;
+
+    private static final int MSG_WEATHER_UPDATE = 0;
+    Handler mWeatherUpdateHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG_WEATHER_UPDATE:
+                    getWeatherList();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,8 +175,8 @@ public class MainActivity extends Activity {
         mWeatherLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("====", "===============LinearLayout");
-                getWeatherList();
+                Log.d(TAG, "====mWeatherLayout.onClick");
+                mWeatherUpdateHandler.sendEmptyMessageDelayed(MSG_WEATHER_UPDATE, 100);
             }
         });
 
@@ -177,6 +193,8 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //registerReceiver(mWeatherReceiver, mFilter);
+        Log.d(TAG, "====onResume");
+        mWeatherUpdateHandler.sendEmptyMessageDelayed(MSG_WEATHER_UPDATE, 100);
     }
 
     @Override
@@ -203,55 +221,47 @@ public class MainActivity extends Activity {
                 case R.id.button_navigation:
                 case R.id.button_navigation1:
                 case R.id.button_navigation2:
-                    //Log.e("====", "==============button_navigation123");
                     startActivity(new Intent().setClassName("com.autonavi.amapautolite", "com.autonavi.auto.remote.fill.UsbFillActivity"));
                     break;
                 case R.id.button_music:
                 case R.id.button_music1:
                 case R.id.button_music2:
-                    //Log.e("====", "==============button_music123");
                     startActivity(new Intent().setClassName("cn.kuwo.kwmusiccar", "cn.kuwo.kwmusiccar.WelcomeActivity"));
                     break;
                 case R.id.button_fm:
                 case R.id.button_fm1:
                 case R.id.button_fm2:
-                    //Log.e("====", "==============button_fm123");
                     startActivity(new Intent().setClassName("com.caf.fmradio", "com.caf.fmradio.MainActivity"));
                     break;
                 case R.id.button_dvr:
                 case R.id.button_dvr1:
                 case R.id.button_dvr2:
-                    //Log.e("====", "==============button_dvr123");
                     startActivity(new Intent().setClassName("com.luobin.dvr", "com.luobin.dvr.ui.MainActivity"));
                     //Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button_btdialer:
                 case R.id.button_btdialer1:
                 case R.id.button_btdialer2:
-                    //Log.e("====", "==============button_btdialer123");
                     startActivity(new Intent().setClassName("com.hmct.bluetoothdialer", "com.hmct.bluetoothdialer.MainActivity"));
                     break;
                 case R.id.button_carassistant:
                 case R.id.button_carassistant1:
                 case R.id.button_carassistant2:
-                    //Log.e("====", "==============button_carassistant123");
                     Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button_msg:
                 case R.id.button_msg1:
                 case R.id.button_msg2:
-                    //Log.e("====", "==============button_msg123");
                     Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button_settings:
                 case R.id.button_settings1:
                 case R.id.button_settings2:
-                    //Log.e("====", "==============button_settings123");
                     startActivity(new Intent().setClassName("com.android.settings", "com.android.settings.Settings"));
                     break;
             }
         }
-        Log.e("====", "=============btnClick=" + isButtonClick);
+        Log.d(TAG, "====btnClick=" + isButtonClick);
     }
 
     View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
@@ -264,31 +274,30 @@ public class MainActivity extends Activity {
             float x = 0;
             float y = 0;
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                Log.e("====", "touch down");
+                Log.d(TAG, "====onTouch-touch down");
                 startTime = System.currentTimeMillis();
                 startX = event.getX();
                 startY = event.getY();
                 return false;  //1 FALSE
             }
             if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                Log.e("====", "touch move");
+                Log.d(TAG, "====onTouch-touch move");
                 //x = event.getX();
                 //y = event.getY();
                 isClick = true;
                 return false;  //2 FALSE
             }
             if (event.getAction() == MotionEvent.ACTION_UP) {
-                Log.e("====", "touch up");
+                Log.d(TAG, "====onTouch-touch up");
                 endTime = System.currentTimeMillis();
                 long time = endTime - startTime;
                 //long time = System.currentTimeMillis() - startTime;
-                Log.e("====", "=============time=" + time);
                 if (Math.abs(event.getX() - startX) > 5 || (Math.abs(event.getY() - startY)) > 5) {
                     isButtonClick = false;
                 } else {
                     isButtonClick = true;
                 }
-                Log.e("====", "==============ACTION_UP=move=" + Math.abs(event.getX() - startX) + "---" + Math.abs(event.getY() - startY));
+                Log.d(TAG, "====ACTION_UP=move=" + Math.abs(event.getX() - startX) + "-" + Math.abs(event.getY() - startY));
                 return false;  //3 FALSE
             }
             return false;
@@ -304,13 +313,13 @@ public class MainActivity extends Activity {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 mIWeatherInterface = IWeatherInterface.Stub.asInterface(service);
                 isConnected = true;
-                Log.e("====", "-----------connected---------" + isConnected);
+                Log.d(TAG, "====bindWeatherService-connected=" + isConnected);
             }
 
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 isConnected = false;
-                Log.e("====", "--------disconnected--------" + isConnected);
+                Log.d(TAG, "====bindWeatherService-disconnected=" + isConnected);
             }
         };
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
@@ -320,27 +329,89 @@ public class MainActivity extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.i(TAG, "action:" + action);
+            Log.d(TAG, "====mWeatherReceiver-action:" + action);
             if (WEATHER_UP_SUCCES.equals(action)) {
-                String string = intent.getStringExtra(WEATHER_LIST);
+                /*String string = intent.getStringExtra(WEATHER_LIST);
                 Log.e("====", "广播接收到天气信息：" + string);
                 JSONArray jsonArray = JSON.parseArray(string);  //转换成 JSonArray
                 Log.e("====", "天气数量：" + jsonArray.size());
-                mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "多云", "青岛市");
+                mWeatherView.updateWeather(getResources().getDrawable(iconId), currTemp + "℃", weather, city);*/
+                mWeatherUpdateHandler.sendEmptyMessageDelayed(MSG_WEATHER_UPDATE, 100);
             }
         }
     };
 
+    /**
+     * @desc get weather info from hoin server
+     * @author zhangzhaolei@erobbing.com
+     */
     private void getWeatherList() {
         try {
             String string = mIWeatherInterface.getWeatherList();
-            Log.e("====", "主动查询的天气：" + string);
+            Log.d(TAG, "主动查询的天气：" + string);
             JSONArray jsonArray = JSON.parseArray(string);  //转换成 JSonArray
-            Log.e("====", "主动查询到的天气数量：" + jsonArray.size());
-            //mTextViewQust.setText(string);
-            mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "多云", "青岛市");
+            //for (int i = 0; i < jsonArray.size(); i++) {
+            String city = jsonArray.getJSONObject(0).getString("cityName");
+            String currTemp = jsonArray.getJSONObject(0).getString("currTemp");
+            String weather = jsonArray.getJSONObject(0).getString("weather");
+            String icon = jsonArray.getJSONObject(0).getString("icon");
+            int iconId = getIconWeather(icon);
+            //}
+            Log.d(TAG, "主动查询到的天气数量：" + jsonArray.size());
+            //mWeatherView.updateWeather(getResources().getDrawable(R.drawable.ic_weather_overcast), "26℃", "多云", "青岛市");
+            mWeatherView.updateWeather(getResources().getDrawable(iconId), currTemp + "℃", weather, city);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * @param icon
+     * @return id
+     * @desc 获取到的天气图标子串转换成本地图片的id
+     * @author zhangzhaolei@erobbing.com
+     */
+    private int getIconWeather(String icon) {
+        switch (icon) {
+            case "Cleartoovercast.png":
+                return R.drawable.ic_weather_cleartoovercast;
+            case "Cloudy.png":
+                return R.drawable.ic_weather_cloudy;
+            case "Cloudytoclear.png":
+                return R.drawable.ic_weather_cloudytoclear;
+            case "Downfall.png":
+                return R.drawable.ic_weather_downfall;
+            case "Drizzle.png":
+                return R.drawable.ic_weather_drizzle;
+            case "Duststorm.png":
+                return R.drawable.ic_weather_duststorm;
+            case "Fair.png":
+                return R.drawable.ic_weather_fair;
+            case "Flurries.png":
+                return R.drawable.ic_weather_flurries;
+            case "Foggy.png":
+                return R.drawable.ic_weather_foggy;
+            case "HeavySnow.png":
+                return R.drawable.ic_weather_heavysnow;
+            case "MidRain.png":
+                return R.drawable.ic_weather_midrain;
+            case "MidSnow.png":
+                return R.drawable.ic_weather_midsnow;
+            case "Overcast.png":
+                return R.drawable.ic_weather_overcast;
+            case "RainShower.png":
+                return R.drawable.ic_weather_rainshower;
+            case "RainStome.png":
+                return R.drawable.ic_weather_rainstome;
+            case "RainStomeToBig.png":
+                return R.drawable.ic_weather_rainstometobig;
+            case "Sandstorm.png":
+                return R.drawable.ic_weather_sandstorm;
+            case "Sleet.png":
+                return R.drawable.ic_weather_sleet;
+            case "ThunderyShower.png":
+                return R.drawable.ic_weather_thunderyshower;
+        }
+        return R.drawable.ic_weather_fair;
     }
 }
