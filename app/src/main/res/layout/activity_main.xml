@@ -104,10 +104,10 @@
             </com.erobbing.erobbinglauncher.widget.WeatherView>
         </LinearLayout>
     </LinearLayout>
-    <!--720 280 60  android:statusBarColor="#00ffffff"   android:layout_marginTop="226dp"-->
+    <!--720 280 60  android:statusBarColor="#00ffffff"   android:layout_marginTop="44dp"-->
     <com.erobbing.erobbinglauncher.CircleMenu.CircleLayout android:layout_width="520dp"
         android:layout_height="520dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:padding="2dp"
         android:layout_gravity="center_horizontal">
 

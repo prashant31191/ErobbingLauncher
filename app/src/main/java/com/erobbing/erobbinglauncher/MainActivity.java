@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.erobbing.erobbinglauncher.FloatButton.FloatViewService;
 import com.erobbing.erobbinglauncher.widget.MusicView;
 import com.erobbing.erobbinglauncher.widget.WeatherView;
 import com.erobbing.erobbinglauncher.widget.CircleProgress.CircleProgress;
@@ -82,7 +83,6 @@ public class MainActivity extends Activity {
     private IWeatherInterface mIWeatherInterface;
     private boolean isConnected = false;
     private IntentFilter mFilter;
-
     private LinearLayout mWeatherLayout;
 
     private static final int MSG_WEATHER_UPDATE = 0;
@@ -195,12 +195,14 @@ public class MainActivity extends Activity {
         //registerReceiver(mWeatherReceiver, mFilter);
         Log.d(TAG, "====onResume");
         mWeatherUpdateHandler.sendEmptyMessageDelayed(MSG_WEATHER_UPDATE, 100);
+        startService(new Intent(MainActivity.this, FloatViewService.class));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //unregisterReceiver(mWeatherReceiver);
+        stopService(new Intent(MainActivity.this, FloatViewService.class));
     }
 
     @Override
@@ -248,11 +250,15 @@ public class MainActivity extends Activity {
                 case R.id.button_carassistant1:
                 case R.id.button_carassistant2:
                     Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, FloatViewService.class);
+                    startService(intent);
                     break;
                 case R.id.button_msg:
                 case R.id.button_msg1:
                 case R.id.button_msg2:
                     Toast.makeText(this, getResources().getString(R.string.toast_todo), Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(MainActivity.this, FloatViewService.class);
+                    stopService(intent1);
                     break;
                 case R.id.button_settings:
                 case R.id.button_settings1:

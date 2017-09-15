@@ -2,4 +2,14 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">1dp</dimen>
     <dimen name="activity_vertical_margin">1dp</dimen>
+
+    <!-- zhangzhaolei add gridApps 20170901 start -->
+    <dimen name="customize_app_icon_width">80dp</dimen>
+    <dimen name="customize_app_icon_height">65dp</dimen>
+    <dimen name="customize_app_icon_title_width">60dp</dimen>
+    <integer name="customize_app_number_columns">4</integer>
+    <!-- zhangzhaolei add gridApps 20170901 end -->
+    <!-- all apps button -->
+    <dimen name="float_button_width">36dp</dimen>
+    <dimen name="float_button_height">36dp</dimen>
 </resources>
